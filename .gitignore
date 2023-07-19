@@ -4,9 +4,9 @@ notes.md
 .vscode
 
 # Settings
-settings.json
-settings.py
-
+.vscode
+.vscode/settings.json
+CoreRoot/settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

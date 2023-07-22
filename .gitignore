@@ -1,13 +1,18 @@
 # Notes
-notes.txt
-notes.md
-.vscode
+/notes.txt
+/notes.md
+/ubuntu.txt
+/.vscode
+
+*.py[co]
+*.sw[po]
+*~
+/secrets.json
+
 
 # Settings
 .vscode/*
 !.vscode/settings.json
-
-!CoreRoot/settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

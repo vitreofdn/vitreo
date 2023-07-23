@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   nginx:
-    container_name: postagram_web
+    container_name: vitreo_web
     restart: on-failure
     image: nginx:latest
     volumes:
@@ -14,7 +14,7 @@ services:
       - api
 
   api:
-    container_name: postagram_api
+    container_name: vitreo_api
     build: .
     restart: always
     env_file: .env
@@ -28,7 +28,7 @@ services:
     depends_on:
       - db
   db:
-    container_name: postagram_db
+    container_name: vitreo_db
     image: postgres:14.3-alpine
     env_file: .env
     volumes:

@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./social-media-react
+        working-directory: ./social-media-app
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2.2.4
@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: 16
           cache: "pnpm"
-          cache-dependency-path: ./social-media-react/pnpm-lock.yaml
+          cache-dependency-path: ./social-media-app/pnpm-lock.yaml
 
       - name: Injecting environment variables
         run: echo "REACT_APP_API_URL=${{ secrets.API_URL }}" >> .env

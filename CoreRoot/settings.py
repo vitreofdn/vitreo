@@ -25,7 +25,9 @@ load_dotenv()
 ENV = os.environ.get("ENV")
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", default="np^t)uenimg!n(#y_!!!v9sb0!p_gv=le(hq$i6qtjjba9($qi"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if ENV == "PROD" else True
@@ -89,12 +91,12 @@ WSGI_APPLICATION = "CoreRoot.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": os.getenv("DATABASE_NAME"),
-        "USER": os.getenv("DATABASE_USER"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-        "HOST": os.environ.get("DATABASE_HOST"),
-        "PORT": os.getenv("DATABASE_PORT"),
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.getenv("DB_PORT"),
     }
 }
 # Password validation
@@ -156,7 +158,7 @@ REST_FRAMEWORK = {
 
 # CORS settings
 
-CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+CORS_ALLOWED_ORIGINS = os.getenv("CORS_ALLOWED_ORIGINS").split(",")
 
 # Media files
 MEDIA_URL = "/media/"
@@ -165,17 +167,3 @@ MEDIA_ROOT = BASE_DIR / "uploads"
 # Default avatar URL
 
 DEFAULT_AVATAR_URL = "https://avatars.dicebear.com/api/identicon/.svg"
-
-# Caching
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        },
-    }
-}
-
-CACHE_TTL = 60 * 5

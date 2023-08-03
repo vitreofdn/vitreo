@@ -13,26 +13,30 @@ services:
     depends_on:
       - api
 
+  db:
+    container_name: vitreo_db
+    image: postgres:14.8-alpine
+    env_file: .env
+    ports:
+      - "5431:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
   api:
     container_name: vitreo_api
     build: .
     restart: always
     env_file: .env
     ports:
-      - "8000:8000"
+      - "3000:3000"
     command: >
-      sh -c "python3 manage.py migrate --no-input && gunicorn CoreRoot.wsgi:application --bind 0.0.0.0:8000"
+      sh -c "python3 manage.py migrate --no-input && gunicorn --bind 0.0.0.0:8000 CoreRoot.wsgi:application"
     volumes:
       - .:/app
       - uploads_volume:/app/uploads
     depends_on:
       - db
-  db:
-    container_name: vitreo_db
-    image: postgres:14.8-alpine
-    env_file: .env
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+
 volumes:
   uploads_volume:
   postgres_data:

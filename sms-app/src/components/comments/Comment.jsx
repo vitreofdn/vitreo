@@ -59,7 +59,7 @@ function Comment(props) {
             <div className="d-flex flex-column justify-content-start align-self-center mt-2">
               <p className="fs-6 m-0">{comment.author.name}</p>
               <p className="fs-6 fw-lighter">
-                <small>timeago</small>
+                <small><ReactTimeAgo date={date} locale="en-US" timeStyle="twitter"/></small>
               </p>
             </div>
           </div>

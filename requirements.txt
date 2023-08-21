@@ -1,11 +1,19 @@
 Django==4.2.3
+
+# for postgres
 psycopg==3.1.9
+
+# for rest api
 djangorestframework==3.14.0
 django-filter==23.2
 pillow==10.0.0
 djangorestframework-simplejwt==5.2.2
 drf-nested-routers==0.93.4
-pytest-django==4.5.2
 django-cors-headers==4.2.0
 python-dotenv==1.0.0
+
+# for testing
+pytest-django==4.5.2
+
+# for production
 gunicorn==21.2.0
